@@ -9,3 +9,5 @@ console.log(multiplyNumber(2,2));
 
 const divide = (a, b) => a / b;
 console.log(divide(6,2));
+
+console.log(add(5,5));

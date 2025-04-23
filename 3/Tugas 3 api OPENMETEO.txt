@@ -1,0 +1,11 @@
+Integrasi Web HTML - Javascript dengan API OpenMeteo
+
+
+buatlah contoh untuk tugas praktek Pengembangan Aplikasi Berbasis API yaitu membuat aplikasi berbasis HTML/PHP/Javascript untuk menampilkan PRAKIRAAN CUACA 3 hari, Max dan Min Temperature, Precipitation Sum berdasarkan lokasi KECAMATAN KLOJEN menggunakan open-meteo
+
+API:
+https://api.open-meteo.com/v1/forecast?latitude=-7.973&longitude=112.6087&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia%2FBangkok&forecast_days=3
+
+
+Pengumpulan
+https://forms.gle/FSZKANc12XNkFSg58

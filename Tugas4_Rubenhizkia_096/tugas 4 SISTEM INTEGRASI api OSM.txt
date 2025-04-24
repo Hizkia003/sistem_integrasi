@@ -1,0 +1,11 @@
+tugas 4 SISTEM INTEGRASI
+
+Instruksi untuk Mahasiswa
+Tugas:
+- Salin kode file 5kecamatan.html pada Modul panduan Integrasi API OSM.
+- Lakukan kustom icon / ganti icon untuk marker
+- Integrasikan dengan API OpenMeteo, pada saat marker sebuah kecamatan di Click, maka akan ditampilkan pada Info Window : Current Temperature dan Precepitation Sum kecamatan tersebut.
+- simpan GitHub.
+
+Pengumpulan:
+https://forms.gle/AGXdFAW46pVu38RF7

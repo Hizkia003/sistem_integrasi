@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Peta 5 Kecamatan Malang</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([-7.98, 112.63], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    const kecamatans = [
+      { name: "Klojen", lat: -7.9787, lon: 112.6326 },
+      { name: "Blimbing", lat: -7.9440, lon: 112.6372 },
+      { name: "Kedungkandang", lat: -8.0123, lon: 112.6589 },
+      { name: "Lowokwaru", lat: -7.9427, lon: 112.6131 },
+      { name: "Sukun", lat: -7.9896, lon: 112.6112 }
+    ];
+
+    kecamatans.forEach(kec => {
+      const marker = L.marker([kec.lat, kec.lon]).addTo(map);
+
+      marker.on('click', () => {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${kec.lat}&longitude=${kec.lon}&current=temperature_2m,precipitation&timezone=auto`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            const temp = data.current?.temperature_2m ?? 'N/A';
+            const precip = data.current?.precipitation ?? 'N/A';
+            marker.bindPopup(`
+              <b>${kec.name}</b><br>
+              Suhu: ${temp}°C<br>
+              Curah Hujan: ${precip} mm
+            `).openPopup();
+          })
+          .catch(error => {
+            console.error("Error:", error);
+            marker.bindPopup(`<b>${kec.name}</b><br>Gagal mengambil data cuaca`).openPopup();
+          });
+      });
+    });
+  </script>
+</body>
+</html>
